@@ -1,26 +1,24 @@
 package Interfaz;
 
+import Classes.*;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class PanelComprador extends JPanel {
+    private ButtonMoneda100 boton100;
+    private Deposito<Moneda> depositoMonedas;
     public PanelComprador(){
         super();
+        depositoMonedas = new Deposito<>();
+
         this.setPreferredSize(new Dimension(450, 800));
-        this.setLayout(new BorderLayout());
-
-        // Botones
-        JButton botonMoneda100 = new JButton("100");
-        botonMoneda100.setPreferredSize(new Dimension(50, 50));
-        botonMoneda100.setBackground(Color.BLUE); // Set background color
-        botonMoneda100.setForeground(Color.BLACK); // Set text color
-        botonMoneda100.setFont(new Font("Arial", Font.BOLD, 16)); // Set font
-        botonMoneda100.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        this.setLayout(new GridLayout());
 
 
-        // Listeners de botones
+        boton100 = new ButtonMoneda100(this.depositoMonedas);
 
-
+        this.add(boton100);
 
     }
 
@@ -32,8 +30,5 @@ public class PanelComprador extends JPanel {
 
 
     }
-
-
-
 
 }
