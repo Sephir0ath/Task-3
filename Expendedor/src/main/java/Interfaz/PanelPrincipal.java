@@ -15,8 +15,8 @@ public class PanelPrincipal extends JPanel {
         comprador = new PanelComprador();
         this.setBackground(Color.WHITE);
 
-        this.add(expendedor, BorderLayout.WEST);
         this.add(comprador, BorderLayout.EAST);
+        this.add(expendedor, BorderLayout.WEST);
 
 
     }

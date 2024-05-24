@@ -6,26 +6,28 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelComprador extends JPanel {
-    private ButtonMoneda100 boton100;
     private Deposito<Moneda> depositoMonedas;
+    private PanelBotonesMonedas panelBotonesMonedas;
+
     public PanelComprador(){
         super();
         depositoMonedas = new Deposito<>();
+        panelBotonesMonedas = new PanelBotonesMonedas(this.depositoMonedas);
+        panelBotonesMonedas.setPreferredSize(new Dimension(100, 75));
+        this.setLayout(new GridLayout(6, 1));
 
+        Label label = new Label();
+        label.setBackground(Color.GRAY);
+        this.add(label);
+        this.add(panelBotonesMonedas, BorderLayout.NORTH);
         this.setPreferredSize(new Dimension(450, 800));
-        this.setLayout(new GridLayout());
-
-
-        boton100 = new ButtonMoneda100(this.depositoMonedas);
-
-        this.add(boton100);
 
     }
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        g.setColor(Color.gray);
+        g.setColor(Color.GRAY);
         g.fillRect(0, 0, 450, 800);
 
 
