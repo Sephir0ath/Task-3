@@ -10,12 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ButtonMoneda100 extends JButton {
-    private Deposito<Moneda> deposito;
-
     public ButtonMoneda100(Deposito<Moneda> deposito){
         super("100");
 
-        this.deposito = deposito;
         this.setBackground(Color.BLUE);
         this.setForeground(Color.BLACK);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));

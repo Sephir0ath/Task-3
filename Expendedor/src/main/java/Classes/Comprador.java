@@ -37,7 +37,7 @@ public class Comprador {
                     break;
                 }
                 vuelto += monedaAObtener.getValor();
-                producto =
+                //producto =
             }
         }
         catch(NoHayProductoException | PagoInsuficienteException | PagoIncorrectoException e){
