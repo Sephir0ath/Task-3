@@ -5,42 +5,42 @@ import Excepciones.PagoIncorrectoException;
 import Excepciones.PagoInsuficienteException;
 
 /**
- * Esta clase representa al Comprador el cual interactúa con el Expendedor y compra el producto
+ * Esta clase representa al Comprador el cual interactúa con el Expendedor e intenta comprar un producto.
  */
 public class Comprador {
-
-    /**
-     * String ya que almacenará el nombre del producto consumido
-     */
     private String sonido;
-
-    /**
-     * Int que contendrá el valor numérico de la cantidad de dinero devuelto
-     */
     private int vuelto;
+    private Producto producto;
 
     /**
-     * Constructor por defecto de la clase
-     * @param moneda Moneda que se utiliza para comprar el producto
-     * @param cualProducto Producto que el comprador solicita comprar
-     * @param expendedor Expendedor que contiene los productos y con el que el comprador interactúa para realizar la compra
-     * @throws NoHayProductoException Excepción que se lanza en caso de no estar el producto solicitado, es decir el deposito está vacío o no existe el producto solicitado
-     * @throws PagoInsuficienteException Excepción que se lanza cuando el valor de la moneda utilizada para el pago es menor al precio del producto solicitado
-     * @throws PagoIncorrectoException Excepción que se lanza cuando no se ingresa una moneda válida, null
+     * Constructor por defecto.
      */
-    public Comprador(Moneda moneda, Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
+    public Comprador() {
 
-        /**
-         * Ciclo que calcula la cantidad de vuelto
-         * Se ejecutará mientras aún haya vuelto que entregar
-         */
-        while(true) {
-            Moneda monedaAObtener = expendedor.getVuelto();
-            if (monedaAObtener == null){
-                break;
+    }
+
+    /**
+     * Método que representa el comprar un producto.
+     * @param moneda Moneda que se utiliza para comprar el producto.
+     * @param cualProducto Producto que el comprador solicita comprar.
+     * @param expendedor Expendedor que contiene los productos para realizar la compra.
+     * @throws NoHayProductoException Caso que no está el producto solicitado (deposito vacío o no existe el producto).
+     * @throws PagoInsuficienteException Caso en que el valor de la moneda es menor al precio del producto.
+     * @throws PagoIncorrectoException Caso en que la moneda es nula.
+     */
+    public void comprar(Moneda moneda, Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        try{
+            sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
+            while(true) {
+                Moneda monedaAObtener = expendedor.getVuelto();
+                if (monedaAObtener == null){
+                    break;
+                }
+                vuelto += monedaAObtener.getValor();
             }
-            vuelto += monedaAObtener.getValor();
+        }
+        catch(NoHayProductoException | PagoInsuficienteException | PagoIncorrectoException e){
+            throw e;
         }
     }
 
