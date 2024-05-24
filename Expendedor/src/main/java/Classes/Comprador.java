@@ -33,10 +33,11 @@ public class Comprador {
             sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
             while(true) {
                 Moneda monedaAObtener = expendedor.getVuelto();
-                if (monedaAObtener == null){
+                if (monedaAObtener == null) {
                     break;
                 }
                 vuelto += monedaAObtener.getValor();
+                producto =
             }
         }
         catch(NoHayProductoException | PagoInsuficienteException | PagoIncorrectoException e){
@@ -56,7 +57,7 @@ public class Comprador {
      * Método que entrega el nombre de el producto consumido
      * @return string sonido con el nombre del producto
      */
-    public String queComiste() {
+    public String queConsumiste() {
         return sonido;
     }
 }

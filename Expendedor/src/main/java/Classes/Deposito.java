@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * Se utiliza para simular un deposito en donde se pueden almacenar y sacar productos
- *
+ *<
  * @param <T> Parametro de tipo generico, define el tipo de deposito
  */
 public class Deposito<T> {
