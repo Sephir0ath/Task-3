@@ -1,25 +1,23 @@
 package Classes;
-import Classes.Dulce;
 
 /**
- * Subclase de Dulce, hace referencia al dulce "Super8"
+ * Subclase de Dulce que representa un Super8.
  */
 public class Super8 extends Dulce {
     /**
-     * Constructor de la clase, inicializa la variable serie
-     *
-     * @param serie valor que representa un identificador unico para cada objeto Snickers
+     * Constructor que le asigna un número de serie al Super8.
+     * @param serie Recibe el numero de serie del Super8.
      */
     public Super8(int serie){
         super(serie);
     }
 
     /**
-     * Este metodo indica el producto que se ha consumido al llamarse
-     *
-     * @return Un String con la palabra "Super8"
+     * Método que representa que el producto fue consumido.
+     * @return String "Super8", indica que se consumió una Super8.
      */
-    public String comer() {
+    @Override
+    public String consumir() {
         return "Super8";
     }
 }

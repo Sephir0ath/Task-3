@@ -1,11 +1,11 @@
 package Classes;
 
 /**
- *Bebida Subclase de Producto de tipo abstracta, sirve de base para las diferentes marcas de Bebidas
+ * Subclase abstracta de Producto, representa las diferentes Bebida (CocaCola, Sprite, Fanta).
  */
 public abstract class Bebida extends Producto{
     /**
-     * Constructor por defecto
+     * Constructor que le asigna un número de serie a la Bebida.
      * @param serie Recibe el numero de serie del producto
      */
     public Bebida(int serie){
@@ -13,16 +13,8 @@ public abstract class Bebida extends Producto{
     }
 
     /**
-     * Método para obtener el número de serie de la bebida
-     * @return Retorna el numero de serie de la bebida
-     */
-    public int getSerie(){
-        return super.getSerie();
-    }
-
-    /**
      * Método abstracto que representa que el producto fue consumido
-     * @return Retorna un String con el nombre del producto consumido
+     * @return String con el nombre del producto consumido
      */
-    public abstract String comer();
+    public abstract String consumir();
 }

@@ -29,7 +29,7 @@ public class Comprador {
      * @throws PagoIncorrectoException Excepción que se lanza cuando no se ingresa una moneda válida, null
      */
     public Comprador(Moneda moneda, Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        sonido = expendedor.comprarProducto(moneda, cualProducto).comer();
+        sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
 
         /**
          * Ciclo que calcula la cantidad de vuelto

@@ -1,13 +1,13 @@
 package Classes;
 
 /**
- * Producto Clase de tipo abstracta, sirve de base para Productos como Dulces y Bebidas
+ * Clase de tipo abstracta, sirve de base para Productos como Dulces y Bebidas.
  */
 public abstract class Producto {
     private int serie;
 
     /**
-     * Constructor por defecto
+     * Constructor que le asigna un número de serie al Producto.
      * @param serie Recibe el numero de serie del producto
      */
     public Producto(int serie){
@@ -26,5 +26,5 @@ public abstract class Producto {
      * Método abstracto que representa que el producto fue consumido
      * @return Retorna un String con el nombre del producto al ser usado
      */
-    public abstract String comer();
+    public abstract String consumir();
 }
