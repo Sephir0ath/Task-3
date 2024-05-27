@@ -10,135 +10,102 @@ import Excepciones.PagoInsuficienteException;
 public class Expendedor {
     private Deposito<Bebida> depositoCoca = new Deposito<>(), depositoFanta = new Deposito<>(), depositoSprite = new Deposito<>();
     private Deposito<Dulce> depositoSnickers = new Deposito<>(), depositoSuper8 = new Deposito<>();
-    private Deposito<Moneda> depositoMonedas = new Deposito<>();
+    private Deposito<Moneda> depositoMonedas = new Deposito<>(), depositoGeneral = new Deposito<>();
+    private Producto productoComprado;
 
     /**
      * Constructor de la clase Expendedor, añade una cierta cantidad de productos a cada dispensador
-     *
-     * @param cantidadProductos valor que indica la cantidad de elementos que tiene cada dispensador
      */
-    public Expendedor(int cantidadProductos) {
-        for (int i = 0; i < cantidadProductos; i++) {
+    public Expendedor() {
+        for (int i = 0; i < 10; i++) {
             depositoCoca.add(new CocaCola(100 + i));
             depositoFanta.add(new Fanta(200 + i));
             depositoSprite.add(new Sprite(300 + i));
             depositoSuper8.add(new Super8(400 + i));
             depositoSnickers.add(new Snickers(500 + i));
         }
+        for(int i=0; i<5; i++){
+            depositoGeneral.add(new Moneda1500());
+            depositoGeneral.add(new Moneda1000());
+            depositoGeneral.add(new Moneda500());
+            depositoGeneral.add(new Moneda100());
+        }
     }
 
     /**
      * Metodo para comprar un producto, se verifica que el ingreso de las variables sea correcto
-     *
-     * @param moneda Moneda que se recibe para pagar un producto
      * @param cualProducto Valor que permite saber qué producto se quiere comprar
      * @return Se retorna el producto pedido por el comprador
      * @throws PagoIncorrectoException Se lanza cuando moneda es vacío (null)
      * @throws PagoInsuficienteException Se lanza cuando el valor de la moneda ingresada es menor al precio de los productos
      * @throws NoHayProductoException Se lanza cuando el deposito del producto vacío está vacío
      */
-    public Producto comprarProducto(Moneda moneda, Productos cualProducto) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
-        int cantidadDeMonedasVuelto;
+    public Producto comprarProducto(Productos cualProducto) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+        int valorMonedas = 0;
 
         if (cualProducto == null) {
             throw new NoHayProductoException();
         }
 
-        if (moneda == null) {
+        if (depositoMonedas == null) {
             throw new PagoIncorrectoException();
-        } else {
-            depositoMonedas.add(moneda);
         }
 
-
-        if (cualProducto == Productos.COCA) {
-            cantidadDeMonedasVuelto = (moneda.getValor() - PrecioProductos.VALORCOCACOLA.getPrecio()) / 100;
-            if (depositoCoca.returnArrayList().isEmpty()) {
-                throw new NoHayProductoException();
+        else {
+            for (int i = 0; i < depositoMonedas.returnArrayList().size(); i++) {
+                valorMonedas += depositoMonedas.returnArrayList().get(i).getValor();
             }
 
-            if (cantidadDeMonedasVuelto < 0) {
+            if (cualProducto.getPrecio() < valorMonedas) {
                 throw new PagoInsuficienteException();
-            } else {
-                depositoMonedas.get();
-                for (int i = 0; i < cantidadDeMonedasVuelto; i++) {
-                    depositoMonedas.add(new Moneda100());
+            }
+
+            // TEMA DE VUELTO, Q HAYAN MONEDAS PARA ENTREGAR DE VUELTO
+            if()
+
+            if (cualProducto == Productos.COCACOLA) {
+                if (depositoCoca.returnArrayList().isEmpty()) {
+                    throw new NoHayProductoException();
+                }
+                productoComprado = depositoCoca.get();
+                return productoComprado;
+            }
+
+            if (cualProducto == Productos.FANTA) {
+                if (depositoFanta.returnArrayList().isEmpty()) {
+                    throw new NoHayProductoException();
                 }
 
-                return depositoCoca.get();
-            }
-        }
-
-        if (cualProducto == Productos.FANTA) {
-            cantidadDeMonedasVuelto = (moneda.getValor() - PrecioProductos.VALORFANTA.getPrecio()) / 100;
-            if (depositoFanta.returnArrayList().isEmpty()) {
-                throw new NoHayProductoException();
+                productoComprado = depositoFanta.get();
+                return productoComprado;
+                }
             }
 
-            if (cantidadDeMonedasVuelto < 0) {
-                throw new PagoInsuficienteException();
-            } else {
-                depositoMonedas.get();
-                for (int i = 0; i < cantidadDeMonedasVuelto; i++) {
-                    depositoMonedas.add(new Moneda100());
+            if (cualProducto == Productos.SPRITE) {
+                if (depositoSprite.returnArrayList().isEmpty()) {
+                    throw new NoHayProductoException();
                 }
 
-                return depositoFanta.get();
-            }
-        }
-
-        if (cualProducto == Productos.SPRITE) {
-            cantidadDeMonedasVuelto = (moneda.getValor() - PrecioProductos.VALORSPRITE.getPrecio()) / 100;
-            if (depositoSprite.returnArrayList().isEmpty()) {
-                throw new NoHayProductoException();
+                productoComprado = depositoSprite.get();
+                return productoComprado;
             }
 
-            if (cantidadDeMonedasVuelto < 0) {
-                throw new PagoInsuficienteException();
-            } else {
-                depositoMonedas.get();
-                for (int i = 0; i < cantidadDeMonedasVuelto; i++) {
-                    depositoMonedas.add(new Moneda100());
+            if (cualProducto == Productos.SUPER8) {
+                if (depositoSuper8.returnArrayList().isEmpty()) {
+                    throw new NoHayProductoException();
                 }
 
-                return depositoSprite.get();
-            }
-        }
-
-        if (cualProducto == Productos.SUPER8) {
-            cantidadDeMonedasVuelto = (moneda.getValor() - PrecioProductos.VALORSUPER8.getPrecio()) / 100;
-            if (depositoSuper8.returnArrayList().isEmpty()) {
-                throw new NoHayProductoException();
+                productoComprado = depositoSuper8.get();
+                return productoComprado;
             }
 
-            if (cantidadDeMonedasVuelto < 0) {
-                throw new PagoInsuficienteException();
-            } else {
-                depositoMonedas.get();
-                for (int i = 0; i < cantidadDeMonedasVuelto; i++) {
-                    depositoMonedas.add(new Moneda100());
+            if (cualProducto == Productos.SNICKERS) {
+                if (depositoSnickers.returnArrayList().isEmpty()) {
+                    throw new NoHayProductoException();
                 }
 
-                return depositoSuper8.get();
-            }
-        }
-
-        if (cualProducto == Productos.SNICKERS) {
-            cantidadDeMonedasVuelto = (moneda.getValor() - PrecioProductos.VALORSNICKERS.getPrecio()) / 100;
-            if (depositoSnickers.returnArrayList().isEmpty()) {
-                throw new NoHayProductoException();
-            }
-
-            if (cantidadDeMonedasVuelto < 0) {
-                throw new PagoInsuficienteException();
-            } else {
-                depositoMonedas.get();
-                for (int i = 0; i < cantidadDeMonedasVuelto; i++) {
-                    depositoMonedas.add(new Moneda100());
-                }
-
-                return depositoSnickers.get();
-            }
+                productoComprado = depositoSnickers.get();
+                return productoComprado;
         }
 
         else {
@@ -147,12 +114,21 @@ public class Expendedor {
     }
 
     /**
-     *  Metodo para devolver una moneda para calcular el vuelto del usuario en la clase comprador
-     *
-     * @return retorna la primera moneda de depositoMonedas
+     *  Método para devolver una moneda para calcular el vuelto del usuario en la clase comprador.
+     * @return
      */
     public Moneda getVuelto(){
-        return depositoMonedas.get();
+        for(int i=0; )
+    }
+
+    /**
+     * Método para obtener el producto que compró el comprador.
+     * @return Producto comprado.
+     */
+    public Producto getProducto(){
+        Producto productoRecienComprado = productoComprado;
+        productoComprado = null;
+        return productoRecienComprado;
     }
 
 }

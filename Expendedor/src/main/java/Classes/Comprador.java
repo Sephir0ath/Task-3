@@ -21,15 +21,18 @@ public class Comprador {
 
     /**
      * Método que representa el comprar un producto.
-     * @param moneda Moneda que se utiliza para comprar el producto.
      * @param cualProducto Producto que el comprador solicita comprar.
      * @param expendedor Expendedor que contiene los productos para realizar la compra.
      * @throws NoHayProductoException Caso que no está el producto solicitado (deposito vacío o no existe el producto).
      * @throws PagoInsuficienteException Caso en que el valor de la moneda es menor al precio del producto.
      * @throws PagoIncorrectoException Caso en que la moneda es nula.
      */
-    public void comprar(Moneda moneda, Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+    public void comprar(Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         try{
+<<<<<<< HEAD
+            expendedor.comprarProducto(cualProducto);
+            producto = expendedor.getProducto();
+=======
             sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
             while(true) {
                 Moneda monedaAObtener = expendedor.getVuelto();
@@ -39,7 +42,9 @@ public class Comprador {
                 vuelto += monedaAObtener.getValor();
                 //producto =
             }
+>>>>>>> 75d9226e58c2df0cd8fe68f4d51255635d94cf2c
         }
+
         catch(NoHayProductoException | PagoInsuficienteException | PagoIncorrectoException e){
             throw e;
         }
@@ -58,6 +63,7 @@ public class Comprador {
      * @return string sonido con el nombre del producto
      */
     public String queConsumiste() {
+        sonido = producto.consumir();
         return sonido;
     }
 }
