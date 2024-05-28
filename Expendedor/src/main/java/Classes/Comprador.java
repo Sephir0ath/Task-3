@@ -29,20 +29,18 @@ public class Comprador {
      */
     public void comprar(Productos cualProducto, Expendedor expendedor) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         try{
-<<<<<<< HEAD
             expendedor.comprarProducto(cualProducto);
             producto = expendedor.getProducto();
-=======
-            sonido = expendedor.comprarProducto(moneda, cualProducto).consumir();
+
             while(true) {
                 Moneda monedaAObtener = expendedor.getVuelto();
                 if (monedaAObtener == null) {
                     break;
                 }
                 vuelto += monedaAObtener.getValor();
-                //producto =
+                
             }
->>>>>>> 75d9226e58c2df0cd8fe68f4d51255635d94cf2c
+
         }
 
         catch(NoHayProductoException | PagoInsuficienteException | PagoIncorrectoException e){

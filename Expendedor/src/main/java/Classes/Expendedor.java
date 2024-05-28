@@ -24,23 +24,18 @@ public class Expendedor {
             depositoSuper8.add(new Super8(400 + i));
             depositoSnickers.add(new Snickers(500 + i));
         }
-        for(int i=0; i<5; i++){
-            depositoGeneral.add(new Moneda1500());
-            depositoGeneral.add(new Moneda1000());
-            depositoGeneral.add(new Moneda500());
-            depositoGeneral.add(new Moneda100());
-        }
     }
 
     /**
-     * Metodo para comprar un producto, se verifica que el ingreso de las variables sea correcto
+     * Metodo para comprar un producto, se verifica que el ingreso de las variables sea correcto.
+     * @param moneda Moneda que se recibe para pagar un producto
      * @param cualProducto Valor que permite saber qué producto se quiere comprar
      * @return Se retorna el producto pedido por el comprador
      * @throws PagoIncorrectoException Se lanza cuando moneda es vacío (null)
      * @throws PagoInsuficienteException Se lanza cuando el valor de la moneda ingresada es menor al precio de los productos
      * @throws NoHayProductoException Se lanza cuando el deposito del producto vacío está vacío
      */
-    public Producto comprarProducto(Productos cualProducto) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
+    public Producto comprarProducto(Moneda moneda, Productos cualProducto) throws PagoIncorrectoException, PagoInsuficienteException, NoHayProductoException {
         int valorMonedas = 0;
 
         if (cualProducto == null) {

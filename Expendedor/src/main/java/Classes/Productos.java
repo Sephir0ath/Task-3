@@ -7,10 +7,10 @@ public enum Productos {
     COCACOLA("CocaCola", 1200),
     SPRITE("Sprite", 1000),
     FANTA("Fanta", 900),
-    SNICKERS("Snickers", 800),
-    SUPER8("Super8", 300);
+    SNICKERS("Snickers", 400),
+    SUPER8("Super8", 100);
 
-    private String nombre;
+    private final String nombre;
     private final int precio;
 
     /**
