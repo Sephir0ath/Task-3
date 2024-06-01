@@ -9,19 +9,15 @@ public class PanelPrincipal extends JPanel {
 
     public PanelPrincipal(){
         super();
-        this.setLayout(new BorderLayout());
-        expendedor = new PanelExpendedor();
+        setLayout(null);
         comprador = new PanelComprador();
-        this.setBackground(Color.WHITE);
-
-        this.add(comprador, BorderLayout.EAST);
-        this.add(expendedor, BorderLayout.WEST);
+        expendedor = new PanelExpendedor();
+        add(comprador);
+        add(expendedor);
     }
 
-
-    protected void paintComponent(Graphics g){
+    @Override
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
-        expendedor.paintComponent(g);
-
     }
 }
