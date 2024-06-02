@@ -24,8 +24,8 @@ public class ButtonMoneda1000 extends JButton{
         setBackground(new Color(0, 0, 0, 0));
 
         moneda1000 = new Moneda1000();
-        setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
-
+        setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda1000.png")));
+        setToolTipText(String.valueOf(moneda1000.getSerie()));
         addMouseListener(new MouseListener() {
 
             /**
@@ -43,36 +43,44 @@ public class ButtonMoneda1000 extends JButton{
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
-                //Añadir lógica de ingresar monedas y deteccion de si hay una moneda antes en el expendedor.
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda1000pressed.png")));
+                if(!PanelIngreso.monedaYaIngresada()) {
+                    PanelIngreso.setPago(moneda1000);
+                    Window.frame().repaint();
+                    moneda1000 = new Moneda1000();
+                    setToolTipText(String.valueOf(moneda1000.getSerie()));
+                }
+                else {
+                    // Ventana emergente indicando que ya hay una moneda
+                }
             }
 
             /**
-             * Evento ejecutado al soltar el botón.
+             * Evento ejecutado al soltar el botón. La moneda está oscurecida.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda1000shaded.png")));
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. La moneda está oscurecida.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda1000shaded.png")));
 
             }
 
             /**
-             * Evento ejecutado al salir del botón.
+             * Evento ejecutado al sacar el mouse del botón. La moneda deja de estar oscurecida.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda1000.png")));
             }
         });
     }

@@ -37,12 +37,13 @@ public class PanelBotonesMonedas extends JPanel {
         add(moneda1500);
 
     }
+
+    /**
+     * Override de paintComponent. Dibuja el panel.
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Dibujar un rectángulo de fondo, es solo para ver el tamaño del panel, luego se borrará.
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, getWidth(), getHeight());
     }
-
 }
