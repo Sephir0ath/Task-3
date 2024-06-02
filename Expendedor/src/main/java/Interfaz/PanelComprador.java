@@ -89,7 +89,7 @@ public class PanelComprador extends JPanel {
                         imageIcon = new ImageIcon(getClass().getClassLoader().getResource("numVuelto4.png"));
                     }
                     else if (numero == '5') {
-                        imageIcon = new ImageIcon(getClass().getClassLoader().getResource("numVuelto6.png"));
+                        imageIcon = new ImageIcon(getClass().getClassLoader().getResource("numVuelto5.png"));
                     }
                     else if (numero == '6') {
                         imageIcon = new ImageIcon(getClass().getClassLoader().getResource("numVuelto6.png"));
