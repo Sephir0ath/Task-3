@@ -141,7 +141,7 @@ public class Expendedor {
                 }
             }
         }
-
+        throw new NoHayProductoException();
     }
 
     /**
