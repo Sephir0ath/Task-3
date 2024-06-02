@@ -17,7 +17,7 @@ public enum Productos {
      * Constructor del Enum, inicializa la variable precio.
      * @param precio Precio del producto pedido.
      */
-    private Productos(String nombre, int precio){
+    Productos(String nombre, int precio){
         this.nombre = nombre;
         this.precio = precio;
     }
