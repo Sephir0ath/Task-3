@@ -4,110 +4,83 @@ import Classes.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Panel que muestra al expendedor, los botones y depositos que contiene.
+ */
 public class PanelExpendedor extends JPanel {
     private static Expendedor expendedor;
-
-	
-    /*private ButtonCoca coca;
-    private ButtonSprite sprite;
-    private ButtonFanta fanta;
-    private ButtonSnickers snickers;
-    private ButtonSuper8 super8;
-
-    private ButtonVuelto vuelto;
+    private ButtonTomarVuelto vuelto;
+    private ButtonTomarProducto dispensador;
+    private ButtonResetear resetear;
     private PanelBotonesCompra compra;
-    private ButtonTomarProducto producto;
-    private PanelIngresarMoneda ingresoMonedas;
+    private PanelIngreso ingreso;
     private PanelDepositoVuelto depositoVuelto;
     private PanelDepositoMonedas depositoMonedas;
-    private PanelDepositoProductos depositoProductos;*/
+    private PanelDepositoProductos depositoProductos;
 
+    /**
+     * Constructor que personaliza el panel e inicializa los paneles y botones que contiene.
+     */
     public PanelExpendedor(){
         super();
 
         expendedor = new Expendedor();
 
-        /*coca = new ButtonCoca();
-        sprite = new ButtonSprite();
-        fanta = new ButtonFanta();
-        snickers = new ButtonSnickers();
-        super8 = new ButtonSuper8();
-
-        vuelto = new ButtonVuelto();
-        producto = new ButtonTomarProducto();
-
         compra = new PanelBotonesCompra();
-        ingresoMonedas = new PanelIngresarMoneda();
+        resetear = new ButtonResetear();
+
+        ingreso = new PanelIngreso();
+        dispensador = new ButtonTomarProducto();
+        vuelto = new ButtonTomarVuelto();
+
         depositoVuelto = new PanelDepositoVuelto();
         depositoMonedas = new PanelDepositoMonedas();
-        depositoProductos = new PanelDepositoProductos();*/
+        depositoProductos = new PanelDepositoProductos();
 
         setLayout(null);
         setBounds(0,0,500, 800);
 
-        /*add(coca);
-        add(sprite);
-        add(fanta);
-        add(snickers);
-        add(super8);
-
         add(compra);
+        add(resetear);
 
+        add(ingreso);
+        add(dispensador);
         add(vuelto);
-        add(producto);
-        add(ingresoMonedas);
+
         add(depositoVuelto);
         add(depositoMonedas);
         add(depositoProductos);
-
-          */
     }
 
+    /**
+     * Método para reiniciar el Expendedor, aplicado al presionar el botón de reiniciar.
+     */
     public static void reinicioExpendedor() {
         expendedor = new Expendedor();
-            }
-
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        // Pintar display de productos
-        g.setColor(Color.RED);
-        g.fillRect(0, 0, 600, 600);
-
-        // Pintar zona sacar productos
-        g.setColor(Color.DARK_GRAY);
-        g.fillRect(0, 600, 600, 200);
-
-        // Zona productos
-        g.setColor(Color.BLACK);
-        g.fillRect(30, 120, 350, 400);
-
-        // Zona coca
-        g.setColor(Color.RED);
-        g.fillRect(70, 160, 70, 130);
-
-        // Zona fanta
-        g.setColor(Color.ORANGE);
-        g.fillRect(165, 160, 70, 130);
-
-        // Zona sprite
-        g.setColor(Color.GREEN);
-        g.fillRect(260, 160, 70, 130);
-
-        // Zona snickers
-        g.setColor(Color.CYAN);
-        g.fillRect(90, 340, 90, 130);
-
-        // Zona super8
-        g.setColor(Color.YELLOW);
-        g.fillRect(220, 340, 90, 130);
-
-        // Zona sacar producto
-        g.setColor(Color.BLACK);
-        g.fillRect(30, 635, 350, 100);
+        ButtonTomarProducto.dispensadorVacio = true;
+        PanelIngreso.setPago(null);
+        ButtonComprar.producto = null;
     }
 
+    /**
+     * Override del método paintComponent(g), personaliza visualmente el panel y su contenido, pinta el fondo del expendedor.
+     * @param g the <code>Graphics</code> object to protect
+     */
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        try {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("panelExpendedor.png")).getImage(), 0, 0, null);
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * Getter para obtener el expendedor actual y poder obtener sus datos.
+     * @return expendedor en el que están contenido todos los datos que se están ejecutando.
+     */
     public static Expendedor getExpendedor() {
         return expendedor;
     }
