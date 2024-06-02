@@ -1,29 +1,79 @@
 package Interfaz;
 
-import Classes.Deposito;
-import Classes.Moneda;
-import Classes.Moneda500;
-
+import Classes.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+/**
+ * Clase utilizada para el botón de la moneda de 500.
+ */
 public class ButtonMoneda500 extends JButton {
-    private Deposito<Moneda> deposito;
+    private Moneda moneda500;
 
-    public ButtonMoneda500(Deposito<Moneda> deposito){
-        super("500");
-        this.setBackground(Color.GREEN);
-        this.setForeground(Color.BLACK);
-        this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+    /**
+     * Constructor inicializa las configuraciones y la moneda de 500.
+     */
+    public ButtonMoneda500(){
+        super();
+        setOpaque(false);
+        setContentAreaFilled(false);
+        setBorderPainted(false);
+        setFocusPainted(false);
+        setBackground(new Color(0, 0, 0, 0));
 
-        this.addActionListener(new ActionListener() {
+        moneda500 = new Moneda500();
+        setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+
+        addMouseListener(new MouseListener() {
+
+            /**
+             * Evento ejecutado al clickear el botón generado por defecto.
+             * @param e evento a ser procesado.
+             */
             @Override
-            public void actionPerformed(ActionEvent e) {
-                deposito.add(new Moneda500());
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            /**
+             * Evento ejecutado al presionar el botón. Se ingresa la moneda a la expendedora.
+             * @param e evento a ser procesado.
+             */
+            @Override
+            public void mousePressed(MouseEvent e) {
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+                //Añadir lógica de ingresar monedas y deteccion de si hay una moneda antes en el expendedor.
+            }
+
+            /**
+             * Evento ejecutado al soltar el botón.
+             * @param e evento a ser procesado.
+             */
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+            }
+
+            /**
+             * Evento ejecutado al entrar el botón.
+             * @param e evento a ser procesado.
+             */
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+
+            }
+
+            /**
+             * Evento ejecutado al salir del botón.
+             * @param e evento a ser procesado.
+             */
+            @Override
+            public void mouseExited(MouseEvent e) {
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
             }
         });
-
     }
 }
