@@ -1,7 +1,9 @@
 package Interfaz;
 
-import Classes.*;
+import Classes.Productos;
+
 import javax.swing.*;
+import java.awt.Window;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,17 +11,22 @@ import java.awt.event.MouseListener;
 public class ButtonFanta extends JButton {
 
     /**
-     * Constructor inicializa las configuraciones y la Fanta a comprar..
+     * Constructor inicializa las configuraciones y la Fanta a comprar.
      */
-    public ButtonFanta(){
+    public ButtonFanta() {
         super();
         setOpaque(false);
         setContentAreaFilled(false);
         setBorderPainted(false);
         setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setBounds(165, 160, 70, 130);
-
+        setBounds(178, 0, 32, 43);
+        if (PanelExpendedor.getExpendedor().depositoSize("depositoFanta") != 0) {
+            setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFanta.png")));
+        }
+        else{
+            setIcon(null);
+        }
         addMouseListener(new MouseListener() {
 
             /**
@@ -37,8 +44,15 @@ public class ButtonFanta extends JButton {
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                ButtonComprar.producto = Productos.FANTA;
-                Window.frame().repaint();
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoFanta") != 0) {
+                    setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaPressed.png")));
+                    ButtonComprar.producto = Productos.FANTA;
+                    Window.frame().repaint();
+                }
+                else{
+                    setIcon(null);
+                }
+
             }
 
             /**
@@ -47,17 +61,34 @@ public class ButtonFanta extends JButton {
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("amarillo.png")));
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoFanta") != 0) {
+                    if (ButtonComprar.producto == Productos.FANTA) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaPressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaShaded.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El botón se oscurece.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("amarillo.png")));
-
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoFanta") != 0) {
+                    if (ButtonComprar.producto == Productos.FANTA) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaPressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaShaded.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
 
             /**
@@ -66,30 +97,17 @@ public class ButtonFanta extends JButton {
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("naranjo.png")));
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoFanta") != 0) {
+                    if (ButtonComprar.producto == Productos.FANTA) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFantaPressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoFanta.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
         });
-    }
-
-    /**
-     * Override de paintComponent.
-     * @param g the <code>Graphics</code> object to protect.
-     */
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        seleccion();
-    }
-
-    /**
-     * Método que remarca el objeto seleccionado.
-     */
-    public void seleccion() {
-        if (ButtonComprar.producto == Productos.FANTA){
-            setIcon(new ImageIcon(getClass().getClassLoader().getResource("amarillo.png")));
-        }
-        else {
-            setIcon(null);
-        }
     }
 }

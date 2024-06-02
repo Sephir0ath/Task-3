@@ -1,7 +1,9 @@
 package Interfaz;
 
-import Classes.*;
+import Classes.Productos;
+
 import javax.swing.*;
+import java.awt.Window;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,17 +11,22 @@ import java.awt.event.MouseListener;
 public class ButtonSuper8 extends JButton {
 
     /**
-     * Constructor inicializa las configuraciones y el Super8 a comprar..
+     * Constructor inicializa las configuraciones y el Super8 a comprar.
      */
-    public ButtonSuper8(){
+    public ButtonSuper8() {
         super();
         setOpaque(false);
         setContentAreaFilled(false);
         setBorderPainted(false);
         setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setBounds(220, 340, 90, 130);
-
+        setBounds(134, 176, 32, 43);
+        if (PanelExpendedor.getExpendedor().depositoSize("depositoSuper8") != 0) {
+            setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8.png")));
+        }
+        else{
+            setIcon(null);
+        }
         addMouseListener(new MouseListener() {
 
             /**
@@ -37,8 +44,15 @@ public class ButtonSuper8 extends JButton {
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                ButtonComprar.producto = Productos.SUPER8;
-                Window.frame().repaint();
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoSuper8") != 0) {
+                    setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Pressed.png")));
+                    ButtonComprar.producto = Productos.SUPER8;
+                    Window.frame().repaint();
+                }
+                else{
+                    setIcon(null);
+                }
+
             }
 
             /**
@@ -47,17 +61,34 @@ public class ButtonSuper8 extends JButton {
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("celeste.png")));
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoSuper8") != 0) {
+                    if (ButtonComprar.producto == Productos.SUPER8) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Pressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Shaded.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El botón se oscurece.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("celeste.png")));
-
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoSuper8") != 0) {
+                    if (ButtonComprar.producto == Productos.SUPER8) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Pressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Shaded.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
 
             /**
@@ -66,30 +97,17 @@ public class ButtonSuper8 extends JButton {
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+                if (PanelExpendedor.getExpendedor().depositoSize("depositoSuper8") != 0) {
+                    if (ButtonComprar.producto == Productos.SUPER8) {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8Pressed.png")));
+                    } else {
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonproductoSuper8.png")));
+                    }
+                }
+                else{
+                    setIcon(null);
+                }
             }
         });
-    }
-
-    /**
-     * Override de paintComponent.
-     * @param g the <code>Graphics</code> object to protect.
-     */
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        seleccion();
-    }
-
-    /**
-     * Método que remarca el objeto seleccionado.
-     */
-    public void seleccion() {
-        if (ButtonComprar.producto == Productos.SUPER8){
-            setIcon(new ImageIcon(getClass().getClassLoader().getResource("celeste.png")));
-        }
-        else {
-            setIcon(null);
-        }
     }
 }
