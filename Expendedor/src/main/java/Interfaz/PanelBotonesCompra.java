@@ -1,20 +1,27 @@
 package Interfaz;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class PanelBotonesCompra extends JPanel {
-    private ButtonComprar botonComprar;
-    private ButtonCancelar botonCancelar;
-
+    private ButtonComprar comprar;
+    private ButtonCancelar cancelar;
+    private ButtonResetear resetear;
     public PanelBotonesCompra(){
         super();
-        this.setLayout(new GridLayout(1, 4, 10, 10));
-        this.setPreferredSize(new Dimension(100, 75));
-        this.setBackground(Color.lightGray);
+        setLayout(null);
+        setOpaque(false);
+        setBounds(400, 120, 70, 190);
 
-        this.add(new ButtonComprar());
-        this.add(new ButtonCancelar());
+        comprar = new ButtonComprar();
+        cancelar = new ButtonCancelar();
+        resetear = new ButtonResetear();
 
+        comprar.setBounds(0,0,70,50);
+        cancelar.setBounds(0, 70, 70, 50);
+        resetear.setBounds(0,140,70,50);
+
+        add(comprar);
+        add(cancelar);
+        add(resetear);
     }
 }
