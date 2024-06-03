@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import java.awt.*;
 import javax.sound.sampled.*;
 import java.io.*;
+import java.time.Instant;
 
 
 /**
@@ -26,6 +27,7 @@ public class Window extends JFrame {
         this.add(panelPrincipal);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        instance = this;
     }
 
     /**
@@ -33,6 +35,7 @@ public class Window extends JFrame {
      * Implementación de patrón Singleton.
      * @return instancia de la ventana.
      */
+
     public static synchronized Window frame() {
         if (instance == null) {
             instance = new Window();
