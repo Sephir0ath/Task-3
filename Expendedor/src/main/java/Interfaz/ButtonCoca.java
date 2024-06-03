@@ -1,7 +1,6 @@
 package Interfaz;
 
-import Classes.Productos;
-
+import Classes.*;
 import javax.swing.*;
 import java.awt.Window;
 import java.awt.*;
