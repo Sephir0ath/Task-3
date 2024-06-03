@@ -1,5 +1,7 @@
 package Interfaz;
 
+import Classes.Productos;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -83,19 +85,19 @@ public class ButtonTomarProducto extends JButton {
             public void mouseEntered(MouseEvent e) {
                 if (!dispensadorVacio) {
                     String producto = PanelComprador.getComprador().getProducto().consumir();
-                    if (producto == "CocaCola"){
+                    if (Objects.equals(producto, "CocaCola")){
                         setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCocaShaded.png")));
                     }
-                    else if (producto == "Sprite"){
+                    else if (Objects.equals(producto, "Sprite")){
                         setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSpriteShaded.png")));
                     }
-                    else if (producto == "Fanta"){
+                    else if (Objects.equals(producto, "Fanta")){
                         setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoFantaShaded.png")));
                     }
-                    else if (producto == "Snickers"){
+                    else if (Objects.equals(producto, "Snickers")){
                         setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSnickersShaded.png")));
                     }
-                    else if (producto == "Super8"){
+                    else if (Objects.equals(producto, "Super8")){
                         setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSuper8Shaded.png")));
                     }
                 }
@@ -120,7 +122,7 @@ public class ButtonTomarProducto extends JButton {
             if (!dispensadorVacio){
                 String producto = PanelComprador.getComprador().getProducto().consumir();
                 if (Objects.equals(producto, "CocaCola")){
-                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCocaCola.png"))).getImage(), 0, 0, null);
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCoca.png"))).getImage(), 0, 0, null);
                 }
                 else if (Objects.equals(producto, "Sprite")){
                     g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSprite.png"))).getImage(), 0, 0, null);
