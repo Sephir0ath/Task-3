@@ -16,7 +16,7 @@ public class Window extends JFrame {
     /**
      * Constructor que ajusta las configuraciones de la Ventana.
      */
-    public Window() {
+    private Window() {
         super("Expendedora");
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

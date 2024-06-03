@@ -50,7 +50,6 @@ public class ButtonSprite extends JButton {
                 else{
                     setIcon(null);
                 }
-
             }
 
             /**
