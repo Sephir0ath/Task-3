@@ -1,14 +1,20 @@
 package Interfaz;
 
-import Classes.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
+/**
+ * Botón para tomar el producto comprado.
+ */
 public class ButtonTomarProducto extends JButton {
     public static boolean dispensadorVacio = true;
+
+    /**
+     * Constructor que personaliza el botón.
+     */
     public ButtonTomarProducto() {
         super();
         setOpaque(false);
@@ -16,7 +22,8 @@ public class ButtonTomarProducto extends JButton {
         setBorderPainted(false);
         setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setBounds(125, 635, 150, 100);
+        setBounds(99, 695, 60, 40);
+
         addMouseListener(new MouseListener() {
 
             /**
@@ -49,23 +56,53 @@ public class ButtonTomarProducto extends JButton {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (!dispensadorVacio) {
-                    setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+                    String producto = PanelComprador.getComprador().getProducto().consumir();
+                    if (producto == "CocaCola"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCocaShaded.png")));
+                    }
+                    else if (producto == "Sprite"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSpriteShaded.png")));
+                    }
+                    else if (producto == "Fanta"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoFantaShaded.png")));
+                    }
+                    else if (producto == "Snickers"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSnickersShaded.png")));
+                    }
+                    else if (producto == "Super8"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSuper8Shaded.png")));
+                    }
                 }
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El producto está oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (!dispensadorVacio) {
-                    setIcon(new ImageIcon(getClass().getClassLoader().getResource("azul.png")));
+                    String producto = PanelComprador.getComprador().getProducto().consumir();
+                    if (producto == "CocaCola"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCocaShaded.png")));
+                    }
+                    else if (producto == "Sprite"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSpriteShaded.png")));
+                    }
+                    else if (producto == "Fanta"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoFantaShaded.png")));
+                    }
+                    else if (producto == "Snickers"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSnickersShaded.png")));
+                    }
+                    else if (producto == "Super8"){
+                        setIcon(new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSuper8Shaded.png")));
+                    }
                 }
             }
 
             /**
-             * Evento ejecutado al salir del botón.
+             * Evento ejecutado al sacar el mouse del botón. El producto deja de estar oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
@@ -79,23 +116,29 @@ public class ButtonTomarProducto extends JButton {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (!dispensadorVacio){
-            if (PanelComprador.getComprador().getProducto().consumir() == "CocaCola"){
-                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("rojo.png"))).getImage(), 5, 19, null);
-            }
-            else if (PanelComprador.getComprador().getProducto().consumir() == "Sprite"){
-                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("verde.png"))).getImage(), 5, 19, null);
-            }
-            else if (PanelComprador.getComprador().getProducto().consumir() == "Fanta"){
-                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("naranjo.png"))).getImage(), 5, 19, null);
-            }
-            else if (PanelComprador.getComprador().getProducto().consumir() == "Snickers"){
-                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("morado.png"))).getImage(), 5, 19, null);
-            }
-            else {
-                g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("celeste.png"))).getImage(), 5, 19, null);
+        try {
+            if (!dispensadorVacio){
+                String producto = PanelComprador.getComprador().getProducto().consumir();
+                if (Objects.equals(producto, "CocaCola")){
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoCocaCola.png"))).getImage(), 0, 0, null);
+                }
+                else if (Objects.equals(producto, "Sprite")){
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSprite.png"))).getImage(), 0, 0, null);
+                }
+                else if (Objects.equals(producto, "Fanta")){
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoFanta.png"))).getImage(), 0, 0, null);
+                }
+                else if (Objects.equals(producto, "Snickers")){
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSnickers.png"))).getImage(), 0, 0, null);
+                }
+                else if (Objects.equals(producto, "Super8")){
+                    g.drawImage((new ImageIcon(getClass().getClassLoader().getResource("dispensadorProductoSuper8.png"))).getImage(), 0, 0, null);
+                }
             }
         }
+        catch (Exception e) {
+            System.err.println(e);
+        }
+        super.paintComponent(g);
     }
 }
