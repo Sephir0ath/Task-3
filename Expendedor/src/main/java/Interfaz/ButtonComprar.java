@@ -60,7 +60,7 @@ public class ButtonComprar extends JButton {
                     Window.frame().repaint();
                 }
                 else {
-                    //new MessageWindow("Hay producto en el dispensador");
+                    new MessageWindow("Hay producto en el dispensador");
                 }
             }
 
