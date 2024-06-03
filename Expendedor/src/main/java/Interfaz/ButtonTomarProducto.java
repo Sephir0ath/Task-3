@@ -139,6 +139,8 @@ public class ButtonTomarProducto extends JButton {
             }
         }
         catch (Exception e) {
+            dispensadorVacio = true;
+            new MessageWindow("Seleccione un producto");
             System.err.println(e);
         }
         super.paintComponent(g);
