@@ -1,6 +1,7 @@
 package Interfaz;
 
-import Classes.*;
+import Classes.Moneda;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,8 +16,9 @@ public class PanelIngreso extends JPanel {
      */
     public PanelIngreso() {
         super();
+        setLayout(null);
         setOpaque(false);
-        setBounds(445,190,30,15);
+        setBounds(405, 238, 60, 50);
     }
 
     /**
@@ -56,25 +58,22 @@ public class PanelIngreso extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        ImageIcon imageIcon;
-        Image image;
-        if (moneda.getValor() == 100) {
-            image = (new ImageIcon(getClass().getClassLoader().getResource("rojo.png"))).getImage();
-            g.drawImage(image, 0, 0, null);
+        try {
+            if (moneda.getValor() == 100) {
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda100Ingresada.png")).getImage(), 0, 0, null);
+            }
+            else if (moneda.getValor() == 500) {
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda500Ingresada.png")).getImage(), 0, 0, null);
+            }
+            else if (moneda.getValor() == 1000) {
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1000Ingresada.png")).getImage(), 0, 0, null);
+            }
+            else if (moneda.getValor() == 1500) {
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1500Ingresada.png")).getImage(), 0, 0, null);
+            }
         }
-        else if (moneda.getValor() == 500) {
-            image = (new ImageIcon(getClass().getClassLoader().getResource("rojo.png"))).getImage();
-            g.drawImage(image, 0, 0, null);
-        }
-        else if (moneda.getValor() == 1000) {
-            image = (new ImageIcon(getClass().getClassLoader().getResource("rojo.png"))).getImage();
-            g.drawImage(image, 0, 0, null);
-        }
-        else {
-            image = (new ImageIcon(getClass().getClassLoader().getResource("rojo.png"))).getImage();
-            g.drawImage(image, 0, 0, null);
-        }
+        catch (Exception e) {
 
+        }
     }
-
 }
