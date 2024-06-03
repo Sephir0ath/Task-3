@@ -1,9 +1,5 @@
 package Interfaz;
 
-import Classes.*;
-import Excepciones.NoHayProductoException;
-import Excepciones.PagoIncorrectoException;
-import Excepciones.PagoInsuficienteException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Clase que cancela la compra de la expendedora.
+ * Botón que cancela la compra de la expendedora.
  */
 public class ButtonCancelar extends JButton {
 
@@ -20,12 +16,9 @@ public class ButtonCancelar extends JButton {
      */
     public ButtonCancelar() {
         super();
-        setOpaque(false);
-        setContentAreaFilled(false);
-        setBorderPainted(false);
-        setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+        setBounds(0, 35, 60, 25);
+        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCancelar.png")));
 
         addMouseListener(new MouseListener() {
 
@@ -44,10 +37,10 @@ public class ButtonCancelar extends JButton {
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("morado.png")));
-                if (PanelIngresarMoneda.monedaYaIngresada()) {
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCancelarPressed.png")));
+                if (PanelIngreso.monedaYaIngresada()) {
                     try {
-                        PanelExpendedor.getExpendedor().comprarProducto(PanelIngresarMoneda.getPago(), null);
+                        PanelExpendedor.getExpendedor().comprarProducto(PanelIngreso.getPago(), null);
                     } catch (Exception a) {
                         Window.frame().repaint();
                     } finally {
@@ -62,25 +55,25 @@ public class ButtonCancelar extends JButton {
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("morado.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCancelarShaded.png")));
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El botón está oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("morado.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCancelarShaded.png")));
             }
 
             /**
-             * Evento ejecutado al salir del botón.
+             * Evento ejecutado al sacar el mouse del botón. El botón deja de estar oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCancelar.png")));
             }
         });
     }

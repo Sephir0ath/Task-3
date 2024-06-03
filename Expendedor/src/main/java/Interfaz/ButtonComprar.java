@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Botón que compra el producto seleccionado en la expendedora.
+ */
 public class ButtonComprar extends JButton {
     public static Productos producto = null;
 
@@ -15,12 +18,9 @@ public class ButtonComprar extends JButton {
      */
     public ButtonComprar(){
         super();
-        setOpaque(false);
-        setContentAreaFilled(false);
-        setBorderPainted(false);
-        setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setIcon(new ImageIcon(getClass().getClassLoader().getResource("amarillo.png")));
+        setBounds(0,0,60,25);
+        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprar.png")));
 
         addMouseListener(new MouseListener() {
 
@@ -39,11 +39,10 @@ public class ButtonComprar extends JButton {
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
-                if(ButtonTomarProducto.dispensadorVacio) try {
-                    PanelComprador.getComprador().comprar(PanelIngresarMoneda.getPago(), Productos.COCACOLA, PanelExpendedor.getExpendedor());
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprarPressed.png")));
+                if (ButtonTomarProducto.dispensadorVacio) try {
+                    PanelComprador.getComprador().comprar(PanelIngreso.getPago(), producto, PanelExpendedor.getExpendedor());
                     ButtonTomarProducto.dispensadorVacio = false;
-                    // PanelExpendedor.actualizarTipText();
                     Window.frame().repaint();
                 }
                 catch (NoHayProductoException f) {
@@ -56,7 +55,7 @@ public class ButtonComprar extends JButton {
                     // Crear ventana emergente
                 }
                 finally {
-                    PanelIngresarMoneda.setPago(null);
+                    PanelIngreso.setPago(null);
                     producto = null;
                     Window.frame().repaint();
                 }
@@ -71,25 +70,25 @@ public class ButtonComprar extends JButton {
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprarShaded.png")));
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El botón está oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("rojo.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprarShaded.png")));
             }
 
             /**
-             * Evento ejecutado al salir del botón.
+             * Evento ejecutado al sacar el mouse del botón. El botón deja de estar oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("amarillo.png")));;
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprar.png")));;
             }
         });
     }

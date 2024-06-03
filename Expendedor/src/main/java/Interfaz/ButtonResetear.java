@@ -1,18 +1,12 @@
 package Interfaz;
 
-import Classes.*;
-import Excepciones.NoHayProductoException;
-import Excepciones.PagoIncorrectoException;
-import Excepciones.PagoInsuficienteException;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Clase que reinicia la expendedora, se regeneran los productos en los depósitos.
+ * Botón que reinicia la expendedora, se regeneran los productos en los depósitos.
  */
 public class ButtonResetear extends JButton {
 
@@ -21,12 +15,9 @@ public class ButtonResetear extends JButton {
      */
     public ButtonResetear() {
         super();
-        setOpaque(false);
-        setContentAreaFilled(false);
-        setBorderPainted(false);
-        setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setIcon(new ImageIcon(getClass().getClassLoader().getResource("morado.png")));
+        setBounds(404, 514, 60, 25);
+        setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetear.png")));
 
         addMouseListener(new MouseListener() {
 
@@ -45,7 +36,7 @@ public class ButtonResetear extends JButton {
              */
             @Override
             public void mousePressed(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("verde.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetearPressed.png")));
                 PanelExpendedor.reinicioExpendedor();
                 Window.frame().repaint();
                 // Crear ventana emergente diciendo que se reinició
@@ -57,25 +48,25 @@ public class ButtonResetear extends JButton {
              */
             @Override
             public void mouseReleased(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("verde.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetearShaded.png")));
             }
 
             /**
-             * Evento ejecutado al entrar el botón.
+             * Evento ejecutado al tener el mouse en el botón. El botón está oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseEntered(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("verde.png")));
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetearShaded.png")));
             }
 
             /**
-             * Evento ejecutado al salir del botón.
+             * Evento ejecutado al sacar el mouse del botón. El botón deja de estar oscurecido.
              * @param e evento a ser procesado.
              */
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(new ImageIcon(getClass().getClassLoader().getResource("morado.png")));;
+                setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetear.png")));;
             }
         });
     }
