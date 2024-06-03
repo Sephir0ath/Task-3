@@ -46,13 +46,13 @@ public class ButtonComprar extends JButton {
                     Window.frame().repaint();
                 }
                 catch (NoHayProductoException f) {
-                    // Crear ventana emergente
+                    new MessageWindow("No hay productos actualmente");
                 }
                 catch (PagoIncorrectoException f) {
-                    // Crear ventana emergente
+                    new MessageWindow("Pago incorrecto");
                 }
                 catch (PagoInsuficienteException f) {
-                    // Crear ventana emergente
+                    new MessageWindow("Pago insuficiente");
                 }
                 finally {
                     PanelIngreso.setPago(null);
@@ -60,7 +60,7 @@ public class ButtonComprar extends JButton {
                     Window.frame().repaint();
                 }
                 else {
-                    // Hay producto en el dispensador, crear ventana emergente
+                    //new MessageWindow("Hay producto en el dispensador");
                 }
             }
 

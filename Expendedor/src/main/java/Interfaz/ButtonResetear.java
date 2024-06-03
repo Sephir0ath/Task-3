@@ -39,7 +39,7 @@ public class ButtonResetear extends JButton {
                 setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonResetearPressed.png")));
                 PanelExpendedor.reinicioExpendedor();
                 Window.frame().repaint();
-                // Crear ventana emergente diciendo que se reinició
+                new MessageWindow("Reiniciado correctamente");
             }
 
             /**
