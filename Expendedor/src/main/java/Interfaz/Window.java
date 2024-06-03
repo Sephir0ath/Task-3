@@ -1,6 +1,6 @@
 package Interfaz;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 import javax.sound.sampled.*;
 import java.io.*;
@@ -27,6 +27,7 @@ public class Window extends JFrame {
         this.add(panelPrincipal);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        setWindowIcon();
         instance = this;
     }
 
@@ -64,6 +65,14 @@ public class Window extends JFrame {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
+    }
+    /**
+     * Método para establecer el icono de la ventana.
+     */
+    private void setWindowIcon() {
+        // Cargar el icono desde los recursos
+        ImageIcon icon = new ImageIcon(getClass().getResource("/IconoExpendedora.png"));
+        this.setIconImage(icon.getImage());
     }
 }
 
