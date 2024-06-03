@@ -9,7 +9,7 @@ import java.awt.*;
  */
 
 public class PanelDepositoMonedas extends JPanel{
-    int limiteSuperior = 1;
+    int limiteSuperior = 0;
     /**
      * Constructor que personaliza el panel.
      */
@@ -29,21 +29,21 @@ public class PanelDepositoMonedas extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (int i=0; i < PanelExpendedor.getExpendedor().depositoSize("depositoMonedas"); i++){
-            if (i == 21*limiteSuperior) {
+            if (i >= 21) {
                 limiteSuperior++;
             }
             Moneda moneda = PanelExpendedor.getExpendedor().getMoneda(i, "depositoMonedas");
             if (moneda.getValor() == 100) {
-                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda100Depositada.png")).getImage(), (limiteSuperior-1)*20 ,81-(4*i), null );
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda100Depositada.png")).getImage(), 0+20*limiteSuperior,81-(4*i)+limiteSuperior*81, null );
             }
             else if (moneda.getValor() == 500) {
-                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda500Depositada.png")).getImage(),(limiteSuperior-1)*20 ,81-(4*i), null );
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda500Depositada.png")).getImage(), 0+20*limiteSuperior,81-(4*i)+limiteSuperior*81, null );
             }
             else if (moneda.getValor() == 1000) {
-                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1000Depositada.png")).getImage(),(limiteSuperior-1)*20 ,81-(4*i), null );
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1000Depositada.png")).getImage(),0+20*limiteSuperior,81-(4*i)+limiteSuperior*81, null );
             }
             else if (moneda.getValor() == 1500) {
-                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1500Depositada.png")).getImage(),(limiteSuperior-1)*20 ,81-(4*i), null );
+                g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("moneda1500Depositada.png")).getImage(),0+20*limiteSuperior,81-(4*i)+limiteSuperior*81, null );
             }
         }
     }

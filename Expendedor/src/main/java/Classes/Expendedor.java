@@ -41,12 +41,12 @@ public class Expendedor {
         if (moneda == null) {
             throw new PagoIncorrectoException();
         }
-/*
+
         if (cualProducto == null) {
             depositoVuelto.add(moneda);
             throw new NoHayProductoException();
         }
-*/
+
         if (cualProducto == Productos.COCACOLA) {
             if (moneda.getValor() >= Productos.COCACOLA.getPrecio() && !depositoCoca.returnArrayList().isEmpty()) {
                 for (int i = 0; i < (moneda.getValor() - Productos.COCACOLA.getPrecio()) / 100; i++) {

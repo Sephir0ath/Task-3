@@ -45,6 +45,7 @@ public class ButtonCancelar extends JButton {
                         Window.frame().repaint();
                     } finally {
                         ButtonComprar.producto = null;
+                        Window.frame().repaint();
                     }
                 }
             }
