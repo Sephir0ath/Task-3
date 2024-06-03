@@ -5,13 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que permite crear instancias de ventanas emergentes
+ */
 public class MessageWindow extends JFrame {
-    private String Message;
+
+    /**
+     * Constructor la clase, inicializa y coloca todos los componentes de la ventana
+     *
+     * @param Message String el cual será el mensaje de error o indicación según el contexto de la instanciación
+     */
     public MessageWindow(String Message){
         this.setSize(new Dimension(500, 200));
         this.setLayout(new GridLayout(2, 3));
         this.setResizable(false);
-        this.Message = Message;
 
         JLabel textLabel = new JLabel();
         textLabel.setText(Message);
@@ -24,6 +31,11 @@ public class MessageWindow extends JFrame {
         okButton.setBounds(90, 80,90, 45);
 
         okButton.addActionListener(new ActionListener() {
+            /**
+             * evento que se lanza al presionar el Botón en la ventana
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 MessageWindow.this.dispose();
