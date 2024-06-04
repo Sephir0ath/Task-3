@@ -70,7 +70,6 @@ public class Window extends JFrame {
      * Método para establecer el icono de la ventana.
      */
     private void setWindowIcon() {
-        // Cargar el icono desde los recursos
         ImageIcon icon = new ImageIcon(getClass().getResource("/IconoExpendedora.png"));
         this.setIconImage(icon.getImage());
     }
