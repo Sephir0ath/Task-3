@@ -19,6 +19,7 @@ public class MessageWindow extends JFrame {
         this.setSize(new Dimension(500, 200));
         this.setLayout(new GridLayout(2, 3));
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
 
         JLabel textLabel = new JLabel();
         textLabel.setText(Message);
