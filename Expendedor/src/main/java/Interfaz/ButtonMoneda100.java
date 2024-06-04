@@ -45,14 +45,11 @@ public class ButtonMoneda100 extends JButton {
             @Override
             public void mousePressed(MouseEvent e) {
                 setIcon(new ImageIcon(getClass().getClassLoader().getResource("moneda100pressed.png")));
-                if(!PanelIngreso.monedaYaIngresada()) {
+                if (!PanelIngreso.monedaYaIngresada()) {
                     PanelIngreso.setPago(moneda100);
                     Window.frame().repaint();
                     moneda100 = new Moneda100();
                     setToolTipText(String.valueOf(moneda100.getSerie()));
-                }
-                else {
-                    // Ventana emergente indicando que ya hay una moneda
                 }
             }
 

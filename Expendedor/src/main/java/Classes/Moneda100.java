@@ -6,10 +6,10 @@ package Classes;
  */
 public class Moneda100 extends Moneda{
     /**
-     * Constructor por defecto, crea una instancia de Moneda100
+     * Constructor por defecto, crea una instancia de Moneda100 y entrega su valor a la superclase para asignar su serie.
      */
     public Moneda100(){
-        super();
+        super(100);
     }
 
     /**

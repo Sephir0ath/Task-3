@@ -10,7 +10,7 @@ import java.awt.*;
 public class PanelExpendedor extends JPanel {
     private static Expendedor expendedor;
     private ButtonTomarVuelto vuelto;
-    private ButtonTomarProducto dispensador;
+    private static ButtonTomarProducto dispensador;
     private ButtonResetear resetear;
     private PanelBotonesCompra compra;
     private PanelIngreso ingreso;
@@ -84,4 +84,12 @@ public class PanelExpendedor extends JPanel {
     public static Expendedor getExpendedor() {
         return expendedor;
     }
+
+    /**
+     * Método para que al tener el mouse sobre el botón del dispensador, se muestre el número de serie de el producto comprado.
+     */
+    public static void mostrarSerieProducto() {
+        dispensador.setToolTipText(String.valueOf(PanelExpendedor.getExpendedor().getProductoSerie()));
+    }
 }
+

@@ -14,6 +14,7 @@ public class Expendedor {
     private Deposito<Dulce> depositoSnickers = new Deposito<>(), depositoSuper8 = new Deposito<>();
     private Deposito<Moneda> depositoMonedas = new Deposito<>(), depositoVuelto = new Deposito<>();
     private Producto productoComprado;
+    private int productoSerie;
 
     /**
      * Constructor de la clase Expendedor, añade una cierta cantidad de productos a cada dispensador
@@ -54,6 +55,7 @@ public class Expendedor {
                 }
                 depositoMonedas.add(moneda);
                 productoComprado = depositoCoca.get();
+                productoSerie = productoComprado.getSerie();
             }
             else {
                 depositoVuelto.add(moneda);
@@ -73,6 +75,7 @@ public class Expendedor {
                 }
                 depositoMonedas.add(moneda);
                 productoComprado = depositoFanta.get();
+                productoSerie = productoComprado.getSerie();
             }
             else {
                 depositoVuelto.add(moneda);
@@ -92,6 +95,7 @@ public class Expendedor {
                 }
                 depositoMonedas.add(moneda);
                 productoComprado = depositoSprite.get();
+                productoSerie = productoComprado.getSerie();
             }
             else {
                 depositoVuelto.add(moneda);
@@ -111,6 +115,7 @@ public class Expendedor {
                 }
                 depositoMonedas.add(moneda);
                 productoComprado = depositoSuper8.get();
+                productoSerie = productoComprado.getSerie();
             }
             else {
                 depositoVuelto.add(moneda);
@@ -130,6 +135,7 @@ public class Expendedor {
                 }
                 depositoMonedas.add(moneda);
                 productoComprado = depositoSnickers.get();
+                productoSerie = productoComprado.getSerie();
             }
             else {
                 depositoVuelto.add(moneda);
@@ -152,13 +158,21 @@ public class Expendedor {
     }
 
     /**
-     * Método para obtener el producto que compró el comprador.
+     * Getter para obtener el producto que compró el comprador.
      * @return Producto comprado.
      */
     public Producto getProducto(){
         Producto productoRecienComprado = productoComprado;
         productoComprado = null;
         return productoRecienComprado;
+    }
+
+    /**
+     * Getter para obtener de forma directa la serie del producto comprado.
+     * @return int productoSerie que es el número de serie de el producto.
+     */
+    public int getProductoSerie(){
+        return productoSerie;
     }
 
     /**

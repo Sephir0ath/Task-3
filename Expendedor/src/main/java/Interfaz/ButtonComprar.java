@@ -42,17 +42,18 @@ public class ButtonComprar extends JButton {
                 setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonComprarPressed.png")));
                 if (ButtonTomarProducto.dispensadorVacio) try {
                     PanelComprador.getComprador().comprar(PanelIngreso.getPago(), producto, PanelExpendedor.getExpendedor());
+                    PanelExpendedor.mostrarSerieProducto();
                     ButtonTomarProducto.dispensadorVacio = false;
                     Window.frame().repaint();
                 }
                 catch (NoHayProductoException f) {
-                    new MessageWindow("No hay productos actualmente");
+                    new MessageWindow("No hay producto en la expendedora / No has seleccionado un producto.");
                 }
                 catch (PagoIncorrectoException f) {
-                    new MessageWindow("Pago incorrecto");
+                    new MessageWindow("Pago incorrecto, no has ingresado una moneda.");
                 }
                 catch (PagoInsuficienteException f) {
-                    new MessageWindow("Pago insuficiente");
+                    new MessageWindow("No ingresaste el dinero suficiente para comprar el producto.");
                 }
                 finally {
                     PanelIngreso.setPago(null);
@@ -60,7 +61,7 @@ public class ButtonComprar extends JButton {
                     Window.frame().repaint();
                 }
                 else {
-                    new MessageWindow("Tome el producto que está debajo de la barra de productos");
+                    new MessageWindow("Tome el producto de la dispensadora antes de comprar de nuevo.");
                 }
             }
 
