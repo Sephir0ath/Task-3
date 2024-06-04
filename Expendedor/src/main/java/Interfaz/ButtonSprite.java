@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Botón que permite escoger la Sprite como producto a comprar.
+ */
 public class ButtonSprite extends JButton {
 
     /**

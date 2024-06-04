@@ -38,7 +38,7 @@ public class PanelComprador extends JPanel {
      * @param g the <code>Graphics</code> object to protect
      */
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("panelComprador.png"));
         g.drawImage(imageIcon.getImage(), 0, 0, null);

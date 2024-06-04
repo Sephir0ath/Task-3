@@ -9,12 +9,11 @@ import java.awt.*;
  */
 public class PanelExpendedor extends JPanel {
     private static Expendedor expendedor;
-    private ButtonTomarVuelto vuelto;
-    private static PanelDispensador dispensador;
-
-    private ButtonResetear resetear;
     private PanelBotonesCompra compra;
+    private ButtonResetear resetear;
     private PanelIngreso ingreso;
+    private static PanelDispensador dispensador;
+    private ButtonTomarVuelto vuelto;
     private PanelDepositoVuelto depositoVuelto;
     private PanelDepositoMonedas depositoMonedas;
     private PanelDepositoProductos depositoProductos;
@@ -64,7 +63,7 @@ public class PanelExpendedor extends JPanel {
     }
 
     /**
-     * Override del método paintComponent(g), personaliza visualmente el panel y su contenido, pinta el fondo del expendedor.
+     * Override del método paintComponent(), personaliza visualmente el panel y su contenido, pinta el fondo del expendedor.
      * @param g the <code>Graphics</code> object to protect
      */
     @Override

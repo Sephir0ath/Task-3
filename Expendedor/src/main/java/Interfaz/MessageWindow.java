@@ -6,14 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Clase que permite crear instancias de ventanas emergentes
+ * Clase que permite crear instancias de ventanas emergentes.
  */
 public class MessageWindow extends JFrame {
 
     /**
-     * Constructor la clase, inicializa y coloca todos los componentes de la ventana
-     *
-     * @param Message String el cual será el mensaje de error o indicación según el contexto de la instanciación
+     * Constructor la clase, inicializa y coloca todos los componentes de la ventana.
+     * @param Message String el cual será el mensaje de error o indicación según el contexto de la instanciación.
      */
     public MessageWindow(String Message){
         this.setSize(new Dimension(500, 200));
@@ -33,9 +32,8 @@ public class MessageWindow extends JFrame {
 
         okButton.addActionListener(new ActionListener() {
             /**
-             * evento que se lanza al presionar el Botón en la ventana
-             *
-             * @param e the event to be processed
+             * Evento que se lanza al presionar el Botón en la ventana.
+             * @param e evento a ser procesado.
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +51,4 @@ public class MessageWindow extends JFrame {
 
         this.setVisible(true);
     }
-
-
-
 }

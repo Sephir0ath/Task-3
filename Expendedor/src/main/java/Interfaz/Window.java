@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import javax.sound.sampled.*;
 import java.io.*;
-import java.time.Instant;
-
 
 /**
  * Clase que representa la ventana de la aplicación.
@@ -36,14 +34,12 @@ public class Window extends JFrame {
      * Implementación de patrón Singleton.
      * @return instancia de la ventana.
      */
-
     public static synchronized Window frame() {
         if (instance == null) {
             instance = new Window();
         }
         return instance;
     }
-
 
     /**
      * Método para reproducir música en un bucle mientras la ventana está activa.
@@ -57,7 +53,7 @@ public class Window extends JFrame {
                 clip.open(audioInput);
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
                 FloatControl volumen = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                volumen.setValue(-20.0f);
+                volumen.setValue(0);
                 clip.start();
             } else {
                 System.out.println("El archivo de música que buscas no existe.");
@@ -66,6 +62,7 @@ public class Window extends JFrame {
             e.printStackTrace();
         }
     }
+    
     /**
      * Método para establecer el icono de la ventana.
      */

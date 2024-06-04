@@ -6,10 +6,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Botón que permite escoger el Snickers como producto a comprar.
+ */
 public class ButtonSnickers extends JButton {
 
     /**
-     * Constructor inicializa las configuraciones y elSnickers a comprar.
+     * Constructor inicializa las configuraciones y el Snickers a comprar.
      */
     public ButtonSnickers() {
         super();

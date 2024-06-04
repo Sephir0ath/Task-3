@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Botón que permite escoger el Super8 como producto a comprar.
+ */
 public class ButtonSuper8 extends JButton {
 
     /**

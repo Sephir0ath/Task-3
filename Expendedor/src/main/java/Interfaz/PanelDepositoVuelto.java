@@ -1,7 +1,6 @@
 package Interfaz;
 
-import Classes.Moneda;
-
+import Classes.*;
 import javax.swing.*;
 import java.awt.*;
 

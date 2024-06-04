@@ -7,9 +7,8 @@ import java.awt.*;
 /**
  * Panel que muestra el depósito de monedas del expendedor.
  */
-
 public class PanelDepositoMonedas extends JPanel{
-    int limiteSuperior = 0;
+    private int limiteSuperior = 0;
     /**
      * Constructor que personaliza el panel.
      */
@@ -19,7 +18,6 @@ public class PanelDepositoMonedas extends JPanel{
         setOpaque(false);
         setBounds(270, 644, 199, 90);
     }
-
 
     /**
      * Override de paintComponent(g) para dibujar las monedas que están en el depósito de monedas.

@@ -11,7 +11,7 @@ public class PanelDispensador extends JPanel{
     private static ButtonTomarProducto dispensador;
 
     /**
-     * Cosntructor que personaliza el panel, añade el botón que contiene.
+     * Constructor que personaliza el panel, añade el botón que contiene.
      */
     public PanelDispensador() {
         super();

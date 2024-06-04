@@ -5,7 +5,14 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Botón que permite tomar el vuelto recibido de la compra, simula el dispensador de dinero de la expendedora.
+ */
 public class ButtonTomarVuelto extends JButton {
+
+    /**
+     * Constructor que personaliza el panel y asigna sus características.
+     */
     public ButtonTomarVuelto() {
         super();
         setOpaque(false);
