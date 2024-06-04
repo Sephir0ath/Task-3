@@ -13,7 +13,6 @@ import java.util.Objects;
  */
 public class ButtonTomarProducto extends JButton {
     public static boolean dispensadorVacio = true;
-
     /**
      * Constructor que personaliza el botón.
      */
@@ -24,7 +23,7 @@ public class ButtonTomarProducto extends JButton {
         setBorderPainted(false);
         setFocusPainted(false);
         setBackground(new Color(0, 0, 0, 0));
-        setBounds(99, 695, 60, 40);
+        setBounds(70, 60, 60, 40);
 
         addMouseListener(new MouseListener() {
 
