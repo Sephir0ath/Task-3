@@ -62,7 +62,7 @@ public class Window extends JFrame {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * Método para establecer el icono de la ventana.
      */
